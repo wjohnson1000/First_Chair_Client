@@ -1,0 +1,18 @@
+.splash-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.splash-outside-container {
+  width: 30%;
+}
+.splash-middle-container {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
