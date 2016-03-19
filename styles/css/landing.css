@@ -3,7 +3,8 @@
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between; }
+  justify-content: space-between;
+  margin-top: 10vh; }
 
 .splash-outside-container {
   width: 30%; }
@@ -15,5 +16,20 @@
   align-content: center;
   align-items: center;
   justify-content: center; }
+  .splash-middle-container .tagline {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start; }
+    .splash-middle-container .tagline h1 {
+      font-size: 3em; }
+    .splash-middle-container .tagline h6 {
+      font-size: 1em; }
+  .splash-middle-container .car-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
 
 /*# sourceMappingURL=landing.css.map */
