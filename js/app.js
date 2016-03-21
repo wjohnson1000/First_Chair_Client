@@ -1,7 +1,7 @@
 var app = angular.module('firstchair', ['ui.router'])
-.config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider){
-    $urlRouterProvider.otherwise('/');
-//    $urlRouterProvider.when('/dashboard', );
+  .config(function($locationProvider, $stateProvider, $urlRouterProvider, $sceDelegateProvider){
+//    $urlRouterProvider.when('/dashboard', '/dashboard?token');
+    $locationProvider.html5Mode(true);
     $stateProvider.state('landing', {
       templateUrl: 'views/landing.html',
       controller: 'landing',
@@ -9,7 +9,11 @@ var app = angular.module('firstchair', ['ui.router'])
     }).state('dashboard', {
       templateUrl: 'views/dashboard.html',
       controller: 'dashboard',
-      url: '/dashboard&token'
+      url: '/dashboard'
+    }).state('dashboardauth', {
+      templateUrl: 'views/dashboard.html',
+      controller: 'dashboard',
+      url: '/dashboard?token'
     }).state('route', {
       templateUrl: 'views/route.html',
       controller: 'route',
@@ -23,6 +27,7 @@ var app = angular.module('firstchair', ['ui.router'])
       controller: 'settings',
       url: '/settings'
     })
+    $urlRouterProvider.otherwise('/');
    $sceDelegateProvider.resourceUrlWhitelist([
      'self',
      '*://www.youtube.com/**'
