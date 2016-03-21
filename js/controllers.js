@@ -10,7 +10,11 @@ app.controller('dashboard', ['$scope', '$http', '$location', '$window', 'forecas
     $scope.forecastData = response.data.isSnow;
     console.log($scope.forecastData);
   })
-  console.log('hello from dashboard');
+  token = window.location.search.substr(window.location.search.indexOf('=') + 1);
+  if(token.length > 0){
+    localStorage.setItem('token', token);
+    console.log('hello from dashboard');
+  }
 }]);
 app.controller('route', ['$scope', '$http', '$location', '$window', 'routeService', function($scope, $http, $location, $window, routeService){
   console.log('hello from route');
