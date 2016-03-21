@@ -1,0 +1,43 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;;
+  align-items: center;
+  align-content: center;
+  margin: 10% auto;
+  width: 50%;
+  font-size: 3em;
+}
+
+.change-settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 180px;
+  width: 50%;
+  .alarm-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+  label {
+    width: 200px;
+    font-size: .5em;
+  }
+  input {
+    width: 100%;
+    border-radius: 5px;
+    height: 20px;
+    font-size: .3em;
+  }
+  button {
+    width: 50%;
+    padding: 10px;
+    font-size: .5em;
+  }
+  button:hover {
+    cursor: pointer;
+  }
+}

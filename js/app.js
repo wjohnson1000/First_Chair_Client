@@ -1,14 +1,26 @@
 var app = angular.module('firstchair', ['ui.router'])
 .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider){
-    $urlRouterProvider.otherwise('/landing');
+    $urlRouterProvider.otherwise('/');
     $stateProvider.state('landing', {
       templateUrl: 'views/landing.html',
       controller: 'landing',
-      url: '/landing'
+      url: '/'
     }).state('dashboard', {
       templateUrl: 'views/dashboard.html',
       controller: 'dashboard',
       url: '/dashboard'
+    }).state('route', {
+      templateUrl: 'views/route.html',
+      controller: 'route',
+      url: '/route/:id'
+    }).state('addroute', {
+      templateUrl: 'views/addroute.html',
+      controller: 'addroute',
+      url: '/addroute'
+    }).state('settings', {
+      templateUrl: 'views/settings.html',
+      controller: 'settings',
+      url: '/settings'
     })
    $sceDelegateProvider.resourceUrlWhitelist([
      'self',

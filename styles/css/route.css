@@ -1,0 +1,82 @@
+.route-container {
+  margin: 10% auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  width: 40%; }
+
+.route-title {
+  font-size: 3em;
+  padding-bottom: 10%; }
+
+.departure-calculator {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  padding-bottom: 10%; }
+
+.headers {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
+  width: 100%;
+  height: 80px;
+  font-size: 2em; }
+
+.times {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
+  width: 100%;
+  height: 80px;
+  font-size: 2em; }
+  .times input {
+    width: 40%;
+    font-size: .9em; }
+
+.map {
+  padding-bottom: 10%; }
+
+.delay {
+  margin: 10%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 2em;
+  justify-content: center;
+  align-items: center;
+  align-content: center; }
+
+.snow-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 80%; }
+  .snow-summary .yesterday, .snow-summary .tomorrow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em; }
+  .snow-summary .bottom-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; }
+    .snow-summary .bottom-row .cell {
+      text-align: center;
+      width: 33%;
+      font-size: 2.5em;
+      border: 1px solid black; }
+
+/*# sourceMappingURL=route.css.map */

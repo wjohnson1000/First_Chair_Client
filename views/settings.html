@@ -1,0 +1,26 @@
+<section class="sidebar-container">
+  <div class="title-block">
+    <h3 ui-sref='dashboard'>First Chair</h3>
+  </div>
+  <nav>
+    <h4>Routes</h4>
+    <ul>
+      <li ui-sref='route'>Route 1</li>
+      <li>Route 2</li>
+      <li>Route 3</li>
+    </ul>
+    <h4 ui-sref='addroute'>Add Route</h4>
+    <h4>Settings</h4>
+    <h4>Logout</h4>
+  </nav>
+</section>
+<section class='settings-container'>
+  <h3>Settings</h3>
+  <form class="change-settings-form" ng-submit=''>
+    <div class="alarm-container">
+      <label for="alarm">Snowfall Alarm</label>
+      <input type="text" name="alarm" value="" placeholder="Set alarm...">
+    </div>
+    <button type="submit" name="add">Change</button>
+  </form>
+</section>

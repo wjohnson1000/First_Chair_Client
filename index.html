@@ -6,31 +6,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript" src="js/services.js"></script>
   <script type="text/javascript" src="js/controllers.js"></script>
   <link rel="stylesheet" href="styles/css/reset.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="styles/css/landing.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="styles/css/dashboard.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="styles/css/route.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="styles/css/addroute.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="styles/css/settings.css" media="screen" title="no title" charset="utf-8">
+  <link href='https://fonts.googleapis.com/css?family=Sansita+One' rel='stylesheet' type='text/css'>
   </head>
-  <body>
-  <div class="splash-container">
-    <div class="splash-outside-container">
-      <img src="img/home.svg" alt="home" />
-    </div>
-    <div class="splash-middle-container">
-      <div class="tagline">
-        <h1>First Chair</h1>
-        <h6>How early do you have to leave?</h6>
-      </div>
-        <button type="button" name="Login" ng-click=login()>Log in</button>
-        <div class="car-icon">
-          <img src="img/transport.svg" alt="car" width="40%" height="40%"/>
-        </div>
-        <div class="arrow-icon">
+  <body ui-view>
 
-        </div>
-    </div>
-    <div class="splash-outside-container">
-      <img src="img/mountains.svg" alt="mountain" />
-    </div>
-  </div>
+
   </body>
 </html>

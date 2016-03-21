@@ -1,7 +1,9 @@
 body {
   display: flex;
   flex-direction: row;
-  background-color: lightgray; }
+  background-color: lightgray;
+  padding-bottom: 200px;
+  font-family: 'Sansita One', cursive; }
 
 .sidebar-container {
   display: flex;
@@ -21,6 +23,8 @@ body {
   background-color: navy; }
   .title-block h3 {
     font-size: 2.5em; }
+  .title-block h3:hover {
+    cursor: pointer; }
 
 nav {
   display: flex;
@@ -30,19 +34,67 @@ nav {
   color: white;
   align-items: flex-start;
   padding: 0 10px 0 20px;
-  height: 70vh;
   width: 80%; }
   nav h4 {
     padding: 20% 10px;
     font-size: 1.8em; }
   nav h4:first-child {
     padding: 20% 10px 7% 10px; }
+  nav h4:hover {
+    cursor: pointer; }
   nav ul {
     list-style: none;
     margin: 0;
     padding: 0; }
   nav li {
     font-size: 1.5em;
-    margin: 0 0 0 30px; }
+    margin: 0 0 10px 30px; }
+  nav li:hover {
+    cursor: pointer; }
+
+.dashboard {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: space-around;
+  width: 40%; }
+
+img {
+  height: 300px; }
+
+.forecast-text {
+  width: 90%;
+  font-size: 3em;
+  text-align: center; }
+
+.route-forecast-grid {
+  display: flex;
+  flex-direction: column;
+  width: 80%; }
+  .route-forecast-grid .top-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center; }
+    .route-forecast-grid .top-row .cell {
+      width: 33%;
+      border: 1px solid black;
+      font-size: 2em;
+      text-align: center; }
+      .route-forecast-grid .top-row .cell h5:hover {
+        cursor: pointer; }
+  .route-forecast-grid .bottom-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center; }
+    .route-forecast-grid .bottom-row .cell {
+      text-align: center;
+      width: 33%;
+      font-size: 2.5em;
+      border: 1px solid black; }
 
 /*# sourceMappingURL=dashboard.css.map */

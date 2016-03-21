@@ -1,34 +1,50 @@
-<!DOCTYPE html>
-<html ng-app='firstchair'>
-  <head>
-  <meta charset="utf-8">
-  <title>First Chair</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
-  <script type="text/javascript" src="../js/app.js"></script>
-  <script type="text/javascript" src="../js/controllers.js"></script>
-  <link rel="stylesheet" href="../styles/css/reset.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="../styles/css/landing.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="../styles/css/dashboard.css" media="screen" title="no title" charset="utf-8">
-  </head>
-  <body>
-    <div class="sidebar-container">
-      <div class="title-block">
-        <h3>First Chair</h3>
+<section class="sidebar-container">
+  <div class="title-block">
+    <h3>First Chair</h3>
+  </div>
+  <nav>
+    <h4>Routes</h4>
+    <ul>
+      <li ui-sref='route'>Route 1</li>
+      <li>Route 2</li>
+      <li>Route 3</li>
+    </ul>
+    <h4 ui-sref='addroute'>Add Route</h4>
+    <h4 ui-sref='settings'>Settings</h4>
+    <h4>Logout</h4>
+  </nav>
+</section>
+<section class="dashboard">
+  <div class="forecast-icon">
+    <img ng-show='forecastData.in <= 0' src="../img/nosnow.svg" alt="" />
+    <img ng-show='forecastData.in > 0' src="../img/flake.svg" alt="" />
+  </div>
+  <div class="forecast-text">
+    <h3 ng-show='forecastData.in > 0'>Snow in the forecast!</h3>
+    <h3 ng-show='forecastData.in <= 0'>No snow in the forecast...</h3>
+  </div>
+  <div class="route-forecast-grid">
+    <div class="top-row">
+      <div class="cell">
+        <h5>Route 1</h5>
       </div>
-      <nav>
-        <h4>Routes</h4>
-        <ul>
-          <li>Route 1</li>
-        </ul>
-        <h4>Add Route</h4>
-        <h4>Settings</h4>
-        <h4>Logout</h4>
-      </nav>
-
+      <div class="cell">
+        <h5>Route 2</h5>
+      </div>
+      <div class="cell">
+        <h5>Route 3</h5>
+      </div>
     </div>
-    <div ui-view>
-
+    <div class="bottom-row">
+      <div class="cell">
+        <h4>{{forecastData.in}}"</h4>
+      </div>
+      <div class="cell">
+        <h4>4"</h4>
+      </div>
+      <div class="cell">
+        <h4>3"</h4>
+      </div>
     </div>
-  </body>
-</html>
+  </div>
+</section>

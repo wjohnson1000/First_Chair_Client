@@ -1,0 +1,38 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  margin: 10% auto;
+  width: 50%;
+  font-size: 3em; }
+
+.change-settings-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 180px;
+  width: 50%; }
+  .change-settings-form .alarm-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row; }
+  .change-settings-form label {
+    width: 200px;
+    font-size: .5em; }
+  .change-settings-form input {
+    width: 100%;
+    border-radius: 5px;
+    height: 20px;
+    font-size: .3em; }
+  .change-settings-form button {
+    width: 50%;
+    padding: 10px;
+    font-size: .5em; }
+  .change-settings-form button:hover {
+    cursor: pointer; }
+
+/*# sourceMappingURL=settings.css.map */
