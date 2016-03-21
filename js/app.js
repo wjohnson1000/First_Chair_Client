@@ -1,6 +1,7 @@
 var app = angular.module('firstchair', ['ui.router'])
 .config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider){
     $urlRouterProvider.otherwise('/');
+//    $urlRouterProvider.when('/dashboard', );
     $stateProvider.state('landing', {
       templateUrl: 'views/landing.html',
       controller: 'landing',
@@ -8,7 +9,7 @@ var app = angular.module('firstchair', ['ui.router'])
     }).state('dashboard', {
       templateUrl: 'views/dashboard.html',
       controller: 'dashboard',
-      url: '/dashboard'
+      url: '/dashboard&token'
     }).state('route', {
       templateUrl: 'views/route.html',
       controller: 'route',
