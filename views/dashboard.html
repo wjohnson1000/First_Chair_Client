@@ -24,7 +24,7 @@
   <div class="route-forecast-grid">
     <div class="top-row">
       <div class="cell" ng-repeat='forecast in dashData'>
-        <h5>{{forecast.city}}</h5>
+        <h5 ui-sref='route({id: $index})'>{{forecast.city}}</h5>
       </div>
     </div>
     <div class="bottom-row" ng-repeat='forecast in dashData'>
