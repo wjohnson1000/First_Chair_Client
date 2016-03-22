@@ -95,11 +95,11 @@ app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', 
             .text("Snowfall");
 }]);
 
-app.controller('addroute', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window){
+app.controller('addroute', ['$scope', '$http', 'dashboardService', function($scope, $http, dashboardService){
   $scope.dashData = dashboardService.getDashData();
   console.log('hello from addroute');
 }]);
-app.controller('settings', ['$scope', 'routeService', '$http', '$location', '$window', function($scope, $http, $location, $window){
+app.controller('settings', ['$scope', '$http', 'dashboardService', function($scope, $http, dashboardService){
   $scope.dashData = dashboardService.getDashData();
   console.log('hello from settings');
 }]);
