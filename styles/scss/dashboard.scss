@@ -3,9 +3,11 @@ body {
   flex-direction: row;
   background-color: lightgray;
   padding-bottom: 200px;
+  font-family: 'Sansita One', cursive;
 }
 
 .sidebar-container {
+  position: fixed;
   display: flex;
   flex-direction: column;
   width: 20%;
