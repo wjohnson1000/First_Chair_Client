@@ -5,15 +5,20 @@ app.controller('landing', ['$scope', '$http', '$location', '$window', function($
     $window.location = "https://firstchair.herokuapp.com/callback"
   }
 }]);
-app.controller('dashboard', ['$scope', '$http', '$location', '$window', 'forecastService', function($scope, $http, $location, $window, forecastService){
-  forecastService.getForecast().then(function(response){
-    $scope.forecastData = response.data.isSnow;
-    console.log($scope.forecastData);
+app.controller('dashboard', ['$scope', '$http', '$location', '$window', 'dashboardService', function($scope, $http, $location, $window, dashboardService){
+  $scope.isSnow = false;
+  dashboardService.myDashboard().then(function(response){
+    $scope.dashData = response.data.destinations;
+    console.log($scope.dashData);
+    $scope.dashData.forEach(function(elem){
+      if(elem.forecast.in > 0){
+        $scope.isSnow = true;
+      }
+    })
   })
   token = window.location.search.substr(window.location.search.indexOf('=') + 1);
   if(token.length > 0){
     localStorage.setItem('token', token);
-    console.log('hello from dashboard');
   }
 }]);
 app.controller('route', ['$scope', '$http', '$location', '$window', 'routeService', function($scope, $http, $location, $window, routeService){

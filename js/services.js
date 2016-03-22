@@ -1,10 +1,7 @@
-app.factory('routeService', ['$http', function($http){
+app.factory('dashboardService', ['$http', function($http){
   return {
-    getRouteData: function(){
-    return $http.get('http://firstchair.herokuapp.com/route')
-      .then(function(response){
-        console.log(response);
-      }) 
+    myDashboard: function(){
+      return $http.get('http://firstchair.herokuapp.com/dashboard')
     }
   }
 }]);

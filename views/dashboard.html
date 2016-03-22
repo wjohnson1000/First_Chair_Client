@@ -5,9 +5,7 @@
   <nav>
     <h4>Routes</h4>
     <ul>
-      <li ui-sref='route'>Route 1</li>
-      <li>Route 2</li>
-      <li>Route 3</li>
+      <li ui-sref='route' ng-repeat='destination in dashData'>{{destination.city}}</li>
     </ul>
     <h4 ui-sref='addroute'>Add Route</h4>
     <h4 ui-sref='settings'>Settings</h4>
@@ -16,8 +14,8 @@
 </section>
 <section class="dashboard">
   <div class="forecast-icon">
-    <img ng-show='forecastData.in <= 0' src="../img/nosnow.svg" alt="" />
-    <img ng-show='forecastData.in > 0' src="../img/flake.svg" alt="" />
+    <img ng-hide='isSnow' src="../img/nosnow.svg" alt="" />
+    <img ng-show='isSnow' src="../img/flake.svg" alt="" />
   </div>
   <div class="forecast-text">
     <h3 ng-show='forecastData.in > 0'>Snow in the forecast!</h3>
@@ -25,25 +23,13 @@
   </div>
   <div class="route-forecast-grid">
     <div class="top-row">
-      <div class="cell">
-        <h5>Route 1</h5>
-      </div>
-      <div class="cell">
-        <h5>Route 2</h5>
-      </div>
-      <div class="cell">
-        <h5>Route 3</h5>
+      <div class="cell" ng-repeat='forecast in dashData'>
+        <h5>{{forecast.city}}</h5>
       </div>
     </div>
-    <div class="bottom-row">
+    <div class="bottom-row" ng-repeat='forecast in dashData'>
       <div class="cell">
-        <h4>{{forecastData.in}}"</h4>
-      </div>
-      <div class="cell">
-        <h4>4"</h4>
-      </div>
-      <div class="cell">
-        <h4>3"</h4>
+        <h4>{{forecast.forecast.in}}"</h4>
       </div>
     </div>
   </div>
