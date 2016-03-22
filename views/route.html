@@ -5,7 +5,8 @@
   <nav>
     <h4>Routes</h4>
     <ul>
-      <li ui-sref='route' ng-repeat='destination in dashData'>{{destination.city}}</li>
+      <li ng-repeat='destination in dashData' ui-sref='route({id: $index})'>
+        {{destination.city}}</li>
     </ul>
     <h4 ui-sref='addroute'>Add Route</h4>
     <h4 ui-sref='settings'>Settings</h4>
@@ -13,7 +14,7 @@
   </nav>
 </section>
 <section class='route-container'>
-  <h3 class="route-title">Route 1</h3>
+  <h3 class="route-title">{{thisRoute.city}}</h3>
   <div class="departure-calculator">
     <div class="headers">
       <h4>Arrive By</h4>

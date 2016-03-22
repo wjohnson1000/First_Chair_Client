@@ -5,7 +5,7 @@
   <nav>
     <h4>Routes</h4>
     <ul>
-      <li ui-sref='route' ng-repeat='destination in dashData'>{{destination.city}}</li>
+      <li ui-sref='route({id: $index})' ng-repeat='destination in dashData'>{{destination.city}}</li>
     </ul>
     <h4 ui-sref='addroute'>Add Route</h4>
     <h4 ui-sref='settings'>Settings</h4>

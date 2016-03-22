@@ -5,7 +5,7 @@ app.controller('landing', ['$scope', '$http', '$location', '$window', function($
     $window.location = "https://firstchair.herokuapp.com/callback"
   }
 }]);
-app.controller('dashboard', ['$scope', '$http', '$location', '$window', 'dashboardService', function($scope, $http, $location, $window, dashboardService){
+app.controller('dashboard', ['$scope', '$http', 'dashboardService', '$stateParams', function($scope, $http, dashboardService, $stateParams){
   $scope.isSnow = false;
   dashboardService.myDashboard().then(function(response){
     $scope.dashData = response.data.destinations;
@@ -22,8 +22,10 @@ app.controller('dashboard', ['$scope', '$http', '$location', '$window', 'dashboa
     localStorage.setItem('token', token);
   }
 }]);
-app.controller('route', ['$scope', '$http', '$location', '$window', 'dashboardService', function($scope, $http, $location, $window, dashboardService){
+app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', function($scope, $http, $stateParams, dashboardService){
+  console.log($stateParams);
   $scope.dashData = dashboardService.getDashData();
+  $scope.thisRoute = dashboardService.getRoute($stateParams.id);
   $scope.traveltimes = [6160, 6170, 6180, 6190];
   $scope.snowfall = [0, 4, 8, 12];
   var width = 700,
