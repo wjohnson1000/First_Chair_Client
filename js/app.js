@@ -17,7 +17,7 @@ var app = angular.module('firstchair', ['ui.router'])
     }).state('route', {
       templateUrl: 'views/route.html',
       controller: 'route',
-      url: '/route/:id'
+      url: '/route'
     }).state('addroute', {
       templateUrl: 'views/addroute.html',
       controller: 'addroute',

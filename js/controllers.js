@@ -10,6 +10,7 @@ app.controller('dashboard', ['$scope', '$http', '$location', '$window', 'dashboa
   dashboardService.myDashboard().then(function(response){
     $scope.dashData = response.data.destinations;
     console.log($scope.dashData);
+    dashboardService.saveDashData($scope.dashData);
     $scope.dashData.forEach(function(elem){
       if(elem.forecast.in > 0){
         $scope.isSnow = true;
@@ -21,11 +22,10 @@ app.controller('dashboard', ['$scope', '$http', '$location', '$window', 'dashboa
     localStorage.setItem('token', token);
   }
 }]);
-app.controller('route', ['$scope', '$http', '$location', '$window', 'routeService', function($scope, $http, $location, $window, routeService){
-  console.log('hello from route');
+app.controller('route', ['$scope', '$http', '$location', '$window', 'dashboardService', function($scope, $http, $location, $window, dashboardService){
+  $scope.dashData = dashboardService.getDashData();
   $scope.traveltimes = [6160, 6170, 6180, 6190];
   $scope.snowfall = [0, 4, 8, 12];
-//  $scope.routeData = routeService.getRouteData();
   var width = 700,
       height = 400,
       padding = 100;
@@ -94,8 +94,10 @@ app.controller('route', ['$scope', '$http', '$location', '$window', 'routeServic
 }]);
 
 app.controller('addroute', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window){
+  $scope.dashData = dashboardService.getDashData();
   console.log('hello from addroute');
 }]);
 app.controller('settings', ['$scope', 'routeService', '$http', '$location', '$window', function($scope, $http, $location, $window){
+  $scope.dashData = dashboardService.getDashData();
   console.log('hello from settings');
 }]);

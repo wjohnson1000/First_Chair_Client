@@ -1,13 +1,11 @@
 <section class="sidebar-container">
   <div class="title-block">
-    <h3 ui-sref='dashboard'>First Chair</h3>
+    <h3>First Chair</h3>
   </div>
   <nav>
     <h4>Routes</h4>
     <ul>
-      <li ui-sref='route'>Route 1</li>
-      <li>Route 2</li>
-      <li>Route 3</li>
+      <li ui-sref='route' ng-repeat='destination in dashData'>{{destination.city}}</li>
     </ul>
     <h4 ui-sref='addroute'>Add Route</h4>
     <h4 ui-sref='settings'>Settings</h4>
