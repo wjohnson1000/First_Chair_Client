@@ -10,15 +10,17 @@
       </ul>
       <h4 ui-sref='addroute'>Add Route</h4>
       <h4 ui-sref='settings'>Settings</h4>
-      <h4>Logout</h4>
+      <h4 ui-sref='landing'>Logout</h4>
     </nav>
   </section>
   <section class='add-destination'>
     <h3>Add Destination</h3>
     <form class="add-destination-form" ng-submit=''>
-      <input type="text" name="place" value="" placeholder="Add route...">
+      <input type="text" name="place" ng-model="newplace" value="" placeholder="Add route...">
       <button type="submit" name="add">Add</button>
     </form>
-    <img class='map'src="../img/map.svg" alt="map" />
+    <iframe width="600" height="450" frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?q=Vail&key=AIzaSyC9CWQ9sZa0uVd0sYs-qo1K-xzq2jYH0qE"
+    allowfullscreen></iframe>
   </section>
 </div>
