@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin: 10% 0 0 calc(5vw + 30%);
   align-items: center;
   align-content: center;
-  margin: 10% auto 5% auto;
   width: 50%;
   font-size: 3em; }
 
@@ -18,12 +18,20 @@
   .add-destination-form input {
     width: 100%;
     border-radius: 5px;
-    height: 20px;
-    font-size: .3em; }
+    height: 30px;
+    font-size: .5em; }
   .add-destination-form button {
     width: 50%;
-    padding: 10px;
-    font-size: .5em; }
+    height: 60px;
+    font-size: 1em;
+    font-family: 'Sansita One', cursive;
+    color: steelblue;
+    box-shadow: 5px 5px 5px #888888; }
+  .add-destination-form button:active {
+    background-color: steelblue;
+    color: white; }
+  .add-destination-form button:hover {
+    cursor: pointer; }
 
 h3 {
   padding-bottom: 10%; }

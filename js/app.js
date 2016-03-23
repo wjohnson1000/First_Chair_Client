@@ -30,6 +30,6 @@ var app = angular.module('firstchair', ['ui.router'])
     $urlRouterProvider.otherwise('/');
    $sceDelegateProvider.resourceUrlWhitelist([
      'self',
-     '*://www.youtube.com/**'
+     '*://www.youtube.com/**',
    ]);
 });

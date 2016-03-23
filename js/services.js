@@ -34,7 +34,15 @@ app.factory('dashboardService', ['$http', function($http){
     getDashData: getDashData,
     saveDashData: saveDashData,
     getRoute: getRoute,
-    getDelay: getDelay
+    getDelay: getDelay,
+    snowfallAlarm: 0,
+    setSnowfallAlarm: function(value){
+        this.snowfallAlarm = value
+        return value
+    },
+    getSnowfallAlarm: function(){  
+      return this.snowfallAlarm 
+    }
   }
 }]);
 app.factory('forecastService', ['$http', function($http){

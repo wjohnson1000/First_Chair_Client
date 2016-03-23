@@ -17,10 +17,14 @@
     <h3>Settings</h3>
     <form class="change-settings-form" ng-submit=''>
       <div class="alarm-container">
-        <label for="alarm">Snowfall Alarm</label>
-        <input type="text" name="alarm" value="" placeholder="Set alarm...">
+        <div class="input-row">
+          <label for="alarm">Snowfall Alarm</label>
+          <input type="text" ng-model='alarm' name="alarm" value="$scope.alarm">
+          <div ng-hide='confirm' class="hidden"></div>
+          <img src="../img/checkmark.svg" alt="" width="50" height="50" ng-show='confirm'/>
+        </div>
       </div>
-      <button type="submit" name="add">Change</button>
+      <button type="submit" name="add" ng-click='setAlarm(alarm)'>Set</button>
     </form>
   </section>
 </div>

@@ -7,6 +7,7 @@ app.controller('landing', ['$scope', '$http', '$location', '$window', function($
 }]);
 app.controller('dashboard', ['$scope', '$http', 'dashboardService', '$stateParams', function($scope, $http, dashboardService, $stateParams){
   $scope.isSnow = false;
+  $scope.snowfallAlarm = dashboardService.getSnowfallAlarm();
   dashboardService.myDashboard().then(function(response){
     $scope.dashData = response.data.destinations;
     console.log($scope.dashData);
@@ -22,10 +23,15 @@ app.controller('dashboard', ['$scope', '$http', 'dashboardService', '$stateParam
     localStorage.setItem('token', token);
   }
 }]);
-app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', function($scope, $http, $stateParams, dashboardService){
+app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', '$sce', function($scope, $http, $stateParams, dashboardService, $sce){
   $scope.dashData = dashboardService.getDashData();
+  $scope.snowfallAlarm = dashboardService.getSnowfallAlarm();
   $scope.thisRoute = dashboardService.getRoute($stateParams.id);
   $scope.showmap = false;
+  $scope.trustSrc = function(src) {
+    return $sce.trustAsResourceUrl(src);
+  }
+  $scope.directionstring = $scope.thisRoute.directionstring;
   $scope.delay = dashboardService.getDelay($scope.dashData[0].forecast.in);
   $scope.dateDelay = new Date($scope.delay * 60 * 1000);
   var width = 700,
@@ -109,10 +115,23 @@ app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', 
 }]);
 
 app.controller('addroute', ['$scope', '$http', 'dashboardService', function($scope, $http, dashboardService){
+  $scope.searchString = "";
+  $scope.routeInput = function(){
+    $scope.searchString = $scope.newplace;
+    $scope.$apply();
+  }
   $scope.dashData = dashboardService.getDashData();
   console.log('hello from addroute');
 }]);
 app.controller('settings', ['$scope', '$http', 'dashboardService', function($scope, $http, dashboardService){
+  $scope.alarm = dashboardService.getSnowfallAlarm();
+  $scope.confirm = false;
+  console.log($scope.alarm);
+  $scope.setAlarm = function(value){
+    dashboardService.setSnowfallAlarm(value);
+    $scope.confirm = true;
+  }
+  //$scope.setAlarm = dashboardService.setSnowfallAlarm($scope.alarm);
   $scope.dashData = dashboardService.getDashData();
   console.log('hello from settings');
 }]);
