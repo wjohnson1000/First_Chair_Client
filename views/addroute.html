@@ -1,22 +1,24 @@
-<section class="sidebar-container">
-  <div class="title-block">
-    <h3 ui-sref='dashboard'>First Chair</h3>
-  </div>
-  <nav>
-    <h4>Routes</h4>
-    <ul>
-      <li ui-sref='route' ng-repeat='destination in dashData'>{{destination.city}}</li>
-    </ul>
-    <h4 ui-sref='addroute'>Add Route</h4>
-    <h4 ui-sref='settings'>Settings</h4>
-    <h4>Logout</h4>
-  </nav>
-</section>
-<section class='add-destination'>
-  <h3>Add Destination</h3>
-  <form class="add-destination-form" ng-submit=''>
-    <input type="text" name="place" value="" placeholder="Add route...">
-    <button type="submit" name="add">Add</button>
-  </form>
-  <img class='map'src="../img/map.svg" alt="map" />
-</section>
+<div class="page-wrapper">
+  <section class="sidebar-container">
+    <div class="title-block">
+      <h3 ui-sref='dashboard'>First Chair</h3>
+    </div>
+    <nav>
+      <h4>Routes</h4>
+      <ul>
+        <li ui-sref='route' ng-repeat='destination in dashData'>{{destination.city}}</li>
+      </ul>
+      <h4 ui-sref='addroute'>Add Route</h4>
+      <h4 ui-sref='settings'>Settings</h4>
+      <h4>Logout</h4>
+    </nav>
+  </section>
+  <section class='add-destination'>
+    <h3>Add Destination</h3>
+    <form class="add-destination-form" ng-submit=''>
+      <input type="text" name="place" value="" placeholder="Add route...">
+      <button type="submit" name="add">Add</button>
+    </form>
+    <img class='map'src="../img/map.svg" alt="map" />
+  </section>
+</div>

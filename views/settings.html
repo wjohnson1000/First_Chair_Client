@@ -1,24 +1,26 @@
-<section class="sidebar-container">
-  <div class="title-block">
-    <h3 ui-sref='dashboard'>First Chair</h3>
-  </div>
-  <nav>
-    <h4>Routes</h4>
-    <ul>
-      <li ui-sref='route' ng-repeat='destination in dashData'>{{destination.city}}</li>
-    </ul>
-    <h4 ui-sref='addroute'>Add Route</h4>
-    <h4 ui-sref='settings'>Settings</h4>
-    <h4>Logout</h4>
-  </nav>
-</section>
-<section class='settings-container'>
-  <h3>Settings</h3>
-  <form class="change-settings-form" ng-submit=''>
-    <div class="alarm-container">
-      <label for="alarm">Snowfall Alarm</label>
-      <input type="text" name="alarm" value="" placeholder="Set alarm...">
+<div class="page-wrapper">
+  <section class="sidebar-container">
+    <div class="title-block">
+      <h3 ui-sref='dashboard'>First Chair</h3>
     </div>
-    <button type="submit" name="add">Change</button>
-  </form>
-</section>
+    <nav>
+      <h4>Routes</h4>
+      <ul>
+        <li ui-sref='route' ng-repeat='destination in dashData'>{{destination.city}}</li>
+      </ul>
+      <h4 ui-sref='addroute'>Add Route</h4>
+      <h4 ui-sref='settings'>Settings</h4>
+      <h4>Logout</h4>
+    </nav>
+  </section>
+  <section class='settings-container'>
+    <h3>Settings</h3>
+    <form class="change-settings-form" ng-submit=''>
+      <div class="alarm-container">
+        <label for="alarm">Snowfall Alarm</label>
+        <input type="text" name="alarm" value="" placeholder="Set alarm...">
+      </div>
+      <button type="submit" name="add">Change</button>
+    </form>
+  </section>
+</div>

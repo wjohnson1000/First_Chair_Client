@@ -1,7 +1,7 @@
-body {
+.page-wrapper {
   display: flex;
-  flex-direction: row;
-  background-color: lightgray;
+  flex-direction: column;
+  background-color: gray;
   padding-bottom: 200px;
   font-family: 'Sansita One', cursive; }
 
@@ -15,15 +15,15 @@ body {
 .title-block {
   display: flex;
   align-content: center;
-  justify-content: center;
   align-items: center;
-  height: 20vh;
+  height: 150px;
   width: 130%;
   color: white;
   border: 2px solid white;
-  background-color: navy; }
+  background-color: steelblue; }
   .title-block h3 {
-    font-size: 2.5em; }
+    margin: 23px auto 0 auto;
+    font-size: 3em; }
   .title-block h3:hover {
     cursor: pointer; }
 
@@ -31,16 +31,18 @@ nav {
   display: flex;
   flex-direction: column;
   border: 2px solid white;
-  background-color: navy;
+  background-color: steelblue;
   color: white;
   align-items: flex-start;
   padding: 0 10px 0 20px;
   width: 80%; }
   nav h4 {
-    padding: 20% 10px;
+    padding: 10% 10px;
     font-size: 1.8em; }
   nav h4:first-child {
     padding: 20% 10px 7% 10px; }
+  nav h4:last-child {
+    padding: 10% 10px 20% 10px; }
   nav h4:hover {
     cursor: pointer; }
   nav ul {
@@ -69,12 +71,15 @@ img {
 .forecast-text {
   width: 90%;
   font-size: 3em;
-  text-align: center; }
+  text-align: center;
+  color: white; }
 
 .route-forecast-grid {
+  font-family: 'Noto Sans', sans-serif;
   display: flex;
   flex-direction: column;
-  width: 80%; }
+  width: 80%;
+  color: white; }
   .route-forecast-grid .top-row {
     width: 100%;
     display: flex;
@@ -83,9 +88,10 @@ img {
     justify-content: center; }
     .route-forecast-grid .top-row .cell {
       width: 33%;
-      border: 1px solid black;
+      border: 2px solid white;
       font-size: 2em;
-      text-align: center; }
+      text-align: center;
+      padding: 15px 0; }
       .route-forecast-grid .top-row .cell h5:hover {
         cursor: pointer; }
   .route-forecast-grid .bottom-row {
@@ -97,6 +103,8 @@ img {
       text-align: center;
       width: 33%;
       font-size: 2.5em;
-      border: 1px solid black; }
+      border: 2px solid white; }
+    .route-forecast-grid .bottom-row h4 {
+      padding: 15px 0; }
 
 /*# sourceMappingURL=dashboard.css.map */

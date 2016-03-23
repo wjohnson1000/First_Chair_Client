@@ -1,4 +1,8 @@
+.page-wrapper {
+  color: white; }
+
 .route-container {
+  font-family: 'Noto Sans', sans-serif;
   margin: 10%;
   margin-left: calc(20% + 5vw);
   display: flex;
@@ -10,7 +14,8 @@
 
 .route-title {
   font-size: 3em;
-  padding-bottom: 10%; }
+  padding-bottom: 40px;
+  font-family: 'Sansita One', cursive; }
 
 .departure-calculator {
   width: 80%;
@@ -66,14 +71,18 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 80%; }
+  width: 80%;
+  padding-bottom: 40px; }
   .snow-summary .yesterday, .snow-summary .tomorrow {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 2em; }
+    font-size: 1.5em; }
+    .snow-summary .yesterday h5, .snow-summary .tomorrow h5 {
+      font-size: 1.8em;
+      padding-top: 20px; }
   .snow-summary .bottom-row {
     width: 100%;
     display: flex;
@@ -84,5 +93,13 @@
       width: 33%;
       font-size: 2.5em;
       border: 1px solid black; }
+
+.map-wrapper h5 {
+  font-size: 2em;
+  padding: 40px;
+  text-align: center; }
+
+.map-wrapper h5:hover {
+  cursor: pointer; }
 
 /*# sourceMappingURL=route.css.map */

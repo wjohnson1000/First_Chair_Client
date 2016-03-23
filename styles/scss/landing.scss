@@ -1,38 +1,86 @@
+main {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // align-items: center;
+  // justify-content: space-around;
+  font-family: 'Sansita One', cursive;
+}
+.body {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.big-img {
+  img {
+    width: 700px;
+    height: 120%;
+    background-color: white;
+    // background-image: url('/img/Breckenridge-slopes.jpg');
+    filter: grayscale(0);
+  }
+}
 .splash-container {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 10vh;
+    flex-direction: column;
+    background-color: white;
+    z-index: 2;
 }
-.splash-outside-container {
-  width: 30%;
+footer {
+  background-color: steelblue;
+  // height: 200px;
+  width: 100%;
+  color: white;
+  font-size: 1.5em;
+  p {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0 auto;
+    padding: 80px;
+    width: 70%;
+    line-height: 1.5em;
+  }
 }
 .splash-middle-container {
-    width: 35%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    color: steelblue;
+    button {
+      // margin-top: 40px;
+      width: 60%;
+      height: 70px;
+      font-size: 2.5em;
+      font-family: 'Sansita One', cursive;
+      color: steelblue;
+      // border-radius: 10%;
+      box-shadow: 5px 5px 5px #888888;
+    }
+    button:active {
+      background-color: steelblue;
+      color: white;
+    }
+    button:hover {
+      cursor: pointer;
+    }
     .tagline {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       align-content: flex-start;
+      height: 200px;
       h1 {
-        font-size: 3em;
+        font-size: 4em;
       }
       h6 {
-        font-size: 1em;
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 1.8em;
       }
-    }
-    .car-icon {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
 }

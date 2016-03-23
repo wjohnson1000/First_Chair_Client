@@ -1,35 +1,72 @@
-.splash-container {
-  width: 90%;
+main {
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 10vh; }
+  flex-direction: column;
+  width: 100%;
+  font-family: 'Sansita One', cursive; }
 
-.splash-outside-container {
-  width: 30%; }
+.body {
+  width: 100%;
+  display: flex;
+  flex-direction: row; }
+
+.big-img img {
+  width: 700px;
+  height: 120%;
+  background-color: white;
+  filter: grayscale(0); }
+
+.splash-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  z-index: 2; }
+
+footer {
+  background-color: steelblue;
+  width: 100%;
+  color: white;
+  font-size: 1.5em; }
+  footer p {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0 auto;
+    padding: 80px;
+    width: 70%;
+    line-height: 1.5em; }
 
 .splash-middle-container {
-  width: 35%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
-  justify-content: center; }
+  justify-content: space-around;
+  color: steelblue; }
+  .splash-middle-container button {
+    width: 60%;
+    height: 70px;
+    font-size: 2.5em;
+    font-family: 'Sansita One', cursive;
+    color: steelblue;
+    box-shadow: 5px 5px 5px #888888; }
+  .splash-middle-container button:active {
+    background-color: steelblue;
+    color: white; }
+  .splash-middle-container button:hover {
+    cursor: pointer; }
   .splash-middle-container .tagline {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    align-content: flex-start; }
+    align-content: flex-start;
+    height: 200px; }
     .splash-middle-container .tagline h1 {
-      font-size: 3em; }
+      font-size: 4em; }
     .splash-middle-container .tagline h6 {
-      font-size: 1em; }
-  .splash-middle-container .car-icon {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 1.8em; }
 
 /*# sourceMappingURL=landing.css.map */

@@ -1,36 +1,38 @@
-<section class="sidebar-container">
-  <div class="title-block">
-    <h3>First Chair</h3>
-  </div>
-  <nav>
-    <h4>Routes</h4>
-    <ul>
-      <li ui-sref='route({id: $index})' ng-repeat='destination in dashData'>{{destination.city}}</li>
-    </ul>
-    <h4 ui-sref='addroute'>Add Route</h4>
-    <h4 ui-sref='settings'>Settings</h4>
-    <h4>Logout</h4>
-  </nav>
-</section>
-<section class="dashboard">
-  <div class="forecast-icon">
-    <img ng-hide='isSnow' src="../img/nosnow.svg" alt="" />
-    <img ng-show='isSnow' src="../img/flake.svg" alt="" />
-  </div>
-  <div class="forecast-text">
-    <h3 ng-show='isSnow'>Snow in the forecast!</h3>
-    <h3 ng-hide='isSnow'>No snow in the forecast...</h3>
-  </div>
-  <div class="route-forecast-grid">
-    <div class="top-row">
-      <div class="cell" ng-repeat='forecast in dashData'>
-        <h5 ui-sref='route({id: $index})'>{{forecast.city}}</h5>
+<div class="page-wrapper">
+  <section class="sidebar-container">
+    <div class="title-block">
+      <h3>First Chair</h3>
+    </div>
+    <nav>
+      <h4>Routes</h4>
+      <ul>
+        <li ui-sref='route({id: $index})' ng-repeat='destination in dashData'>{{destination.city}}</li>
+      </ul>
+      <h4 ui-sref='addroute'>Add Route</h4>
+      <h4 ui-sref='settings'>Settings</h4>
+      <h4>Logout</h4>
+    </nav>
+  </section>
+  <section class="dashboard">
+    <div class="forecast-icon">
+      <img ng-hide='isSnow' src="../img/nosnow.svg" alt="" />
+      <img ng-show='isSnow' src="../img/flake.svg" alt="" />
+    </div>
+    <div class="forecast-text">
+      <h3 ng-show='isSnow'>Snow in the forecast!</h3>
+      <h3 ng-hide='isSnow'>No snow in the forecast...</h3>
+    </div>
+    <div class="route-forecast-grid">
+      <div class="top-row">
+        <div class="cell" ng-repeat='forecast in dashData'>
+          <h5 ui-sref='route({id: $index})'>{{forecast.city}}</h5>
+        </div>
+      </div>
+      <div class="bottom-row" ng-repeat='forecast in dashData'>
+        <div class="cell">
+          <h4>{{forecast.forecast.in}}"</h4>
+        </div>
       </div>
     </div>
-    <div class="bottom-row" ng-repeat='forecast in dashData'>
-      <div class="cell">
-        <h4>{{forecast.forecast.in}}"</h4>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
