@@ -1,3 +1,5 @@
 *.map
 *styles/.sass-cache/
 *.swp
+*.jpg
+*.jpeg
