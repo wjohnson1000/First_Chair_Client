@@ -26,6 +26,8 @@ app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', 
   $scope.dashData = dashboardService.getDashData();
   $scope.thisRoute = dashboardService.getRoute($stateParams.id);
   $scope.showmap = false;
+  $scope.delay = dashboardService.getDelay($scope.dashData[0].forecast.in);
+  $scope.dateDelay = new Date($scope.delay * 60 * 1000);
   var width = 700,
       height = 500,
       padding = 100;
