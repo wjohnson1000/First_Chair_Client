@@ -1,11 +1,13 @@
 .route-container {
-  margin: 10% auto 0;
+  margin: 10%;
+  // padding-left: 200px;
+  margin-left: calc(20% + 5vw);
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: space-around;
-  width: 40%;
+  width: calc(100% - 20% - 5vw);
 }
 .route-title {
   font-size: 3em;
@@ -15,7 +17,7 @@
   width: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;;
+  justify-content: flex-start;
   align-items: center;
   align-content: center;
   padding-bottom: 10%;

@@ -18,8 +18,8 @@
     <img ng-show='isSnow' src="../img/flake.svg" alt="" />
   </div>
   <div class="forecast-text">
-    <h3 ng-show='forecastData.in > 0'>Snow in the forecast!</h3>
-    <h3 ng-show='forecastData.in <= 0'>No snow in the forecast...</h3>
+    <h3 ng-show='isSnow'>Snow in the forecast!</h3>
+    <h3 ng-hide='isSnow'>No snow in the forecast...</h3>
   </div>
   <div class="route-forecast-grid">
     <div class="top-row">

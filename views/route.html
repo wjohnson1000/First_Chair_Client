@@ -1,20 +1,32 @@
 <section class="sidebar-container">
-  <div class="title-block">
-    <h3 ui-sref='dashboard'>First Chair</h3>
+  <div class="sidebar">
+    <div class="title-block">
+      <h3 ui-sref='dashboard'>First Chair</h3>
+    </div>
+    <nav>
+      <h4>Routes</h4>
+      <ul>
+        <li ng-repeat='destination in dashData' ui-sref='route({id: $index})'>
+          {{destination.city}}</li>
+      </ul>
+      <h4 ui-sref='addroute'>Add Route</h4>
+      <h4 ui-sref='settings'>Settings</h4>
+      <h4>Logout</h4>
+    </nav>
   </div>
-  <nav>
-    <h4>Routes</h4>
-    <ul>
-      <li ng-repeat='destination in dashData' ui-sref='route({id: $index})'>
-        {{destination.city}}</li>
-    </ul>
-    <h4 ui-sref='addroute'>Add Route</h4>
-    <h4 ui-sref='settings'>Settings</h4>
-    <h4>Logout</h4>
-  </nav>
 </section>
 <section class='route-container'>
   <h3 class="route-title">{{thisRoute.city}}</h3>
+  <div class="snow-summary">
+    <div class="yesterday">
+      <h4>Today's Forecast</h4>
+      <h5>{{thisRoute.forecast.in}}"</h5>
+    </div>
+    <div class="tomorrow">
+      <h4>Tomorrow's Snow Delay</h4>
+      <h5>0"</h5>
+    </div>
+  </div>
   <div class="departure-calculator">
     <div class="headers">
       <h4>Arrive By</h4>
@@ -25,25 +37,18 @@
       <h5>6:00am</h5>
     </div>
   </div>
-  <iframe width="600" height="450" frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/directions?origin=Denver+C0&destination=Vail+CO&key=AIzaSyC9CWQ9sZa0uVd0sYs-qo1K-xzq2jYH0qE"
-  allowfullscreen></iframe>
+
   <div class="graph">
 
   </div>
-  <div class="delay">
+  <h5 ng-hide='showmap' ng-click='showmap = !showmap'>Show Map</h5>
+  <h5 ng-show='showmap' ng-click='showmap = !showmap'>Hide Map</h5>
+  <iframe ng-show='showmap' width="600" height="450" frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/directions?origin=Denver+C0&destination=Vail+CO&key=AIzaSyC9CWQ9sZa0uVd0sYs-qo1K-xzq2jYH0qE"
+  allowfullscreen></iframe>
+  <!-- <div class="delay">
     <h3>Current delay due to snow</h3>
     <h3>20 minutes</h3>
-  </div>
-  <div class="snow-summary">
-    <div class="yesterday">
-      <h4>Past 24 hrs</h4>
-      <h5>3"</h5>
-    </div>
-    <div class="tomorrow">
-      <h4>Next 24 hrs</h4>
-      <h5>0"</h5>
-    </div>
-  </div>
+  </div> -->
 
 </section>

@@ -23,46 +23,48 @@ app.controller('dashboard', ['$scope', '$http', 'dashboardService', '$stateParam
   }
 }]);
 app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', function($scope, $http, $stateParams, dashboardService){
-  console.log($stateParams);
   $scope.dashData = dashboardService.getDashData();
   $scope.thisRoute = dashboardService.getRoute($stateParams.id);
-  $scope.traveltimes = [6160, 6170, 6180, 6190];
-  $scope.snowfall = [0, 4, 8, 12];
+  $scope.showmap = false;
   var width = 700,
-      height = 400,
+      height = 500,
       padding = 100;
   var snow_vis = d3.select(".graph").append("svg")
                   .attr("width", width)
                   .attr("height", height)
                   .attr("padding", padding);
-  var nodes = [{x: 30, y: 50},
-              {x: 50, y: 80},
-              {x: 200, y: 120}]
-  var links = [
-    {source: nodes[0], target: nodes[1]},
-    {source: nodes[2], target: nodes[1]}
-  ]
-  var x_domain = d3.extent(nodes, function(d) { return d.x; }),
-      y_domain = d3.extent(nodes, function(d) { return d.y; });
+  var nodes = $scope.dashData[0].graph_data;
+  var max = nodes[nodes.length - 1];
+  var min = nodes[0];
+  var links = [];
+  function makeLinks(array){
+    for(i=0; i<array.length-1; i++){
+      links.push({source: array[i], target: array[i + 1]});
+    }
+  }
+  makeLinks(nodes);
+  console.log(links);
+  var x_domain = d3.extent(nodes, function(d) { return d.snowfall; }),
+      y_domain = d3.extent(nodes, function(d) { return d.nextdaydrive - min.nextdaydrive; });
   snow_vis.selectAll("circle .nodes")
     .data(nodes)
     .enter()
     .append("svg:circle")
     .attr("class", "nodes")
-    .attr("cx", function(d) {return d.x; })
-    .attr("cy", function(d) {return d.y; })
-    .attr("r", "10px")
-    .attr("fill", "steelblue")
+    .attr("cx", function(d) {return padding + (d.snowfall / max.snowfall) * (width - 2 * padding); })
+    .attr("cy", function(d) {return padding/2 + (d.nextdaydrive - max.nextdaydrive)/(min.nextdaydrive - max.nextdaydrive) * (height - 3/2*padding); })
+    .attr("r", "5px")
+    .attr("fill", "steelblue");
 
   snow_vis.selectAll(".line")
     .data(links)
     .enter()
     .append("line")
     .attr('class', 'link')
-    .attr("x1", function(d) { return d.source.x })
-    .attr("y1", function(d) { return d.source.y })
-    .attr("x2", function(d) { return d.target.x })
-    .attr("y2", function(d) { return d.target.y })
+    .attr("x1", function(d) { return padding + (d.source.snowfall / max.snowfall) * (width - 2 * padding) })
+    .attr("y1", function(d) { return padding/2 + (d.source.nextdaydrive - max.nextdaydrive)/(min.nextdaydrive - max.nextdaydrive) * (height - 3/2*padding); })
+    .attr("x2", function(d) { return padding + (d.target.snowfall / max.snowfall) * (width - 2 * padding) })
+    .attr("y2", function(d) { return padding/2 + (d.target.nextdaydrive - max.nextdaydrive)/(min.nextdaydrive - max.nextdaydrive) * (height - 3/2*padding); })
     .style("stroke", "rgb(6,120,155)");
   var yScale = d3.scale.linear()
           .domain(y_domain).nice()
@@ -87,12 +89,12 @@ app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', 
        snow_vis.append("text")
             .attr("text-anchor", "middle")
             .attr("transform", "translate("+ (padding/2) +","+(height/2)+")rotate(-90)")
-            .text("Delay");
+            .text("Today's Drive Time Delay (min)");
 
        snow_vis.append("text")
             .attr("text-anchor", "middle")
             .attr("transform", "translate("+ (width/2) +","+(height-(padding/3))+")")
-            .text("Snowfall");
+            .text("Yesterday's Snowfall (in)");
 }]);
 
 app.controller('addroute', ['$scope', '$http', 'dashboardService', function($scope, $http, dashboardService){
