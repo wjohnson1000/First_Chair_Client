@@ -1,3 +1,10 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+  padding-bottom: 400px;
+  font-family: 'Sansita One', cursive;
+}
 .add-destination {
   display: flex;
   flex-direction: column;
@@ -22,7 +29,7 @@
     font-size: .5em;
   }
   button {
-    width: 50%;
+    width: 60%;
     height: 60px;
     font-size: 1em;
     font-family: 'Sansita One', cursive;
@@ -42,4 +49,47 @@ h3 {
 }
 button {
   margin-bottom: 10%;
+}
+.result {
+  font-family: 'Noto Sans', sans-serif;
+  border: 2px solid white;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  .result-info {
+    width: 60%;
+  }
+  .add-result {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: flex-end;
+    button {
+      width: 50%;
+      height: 60px;
+      font-size: .6em;
+      font-family: 'Sansita One', cursive;
+      color: steelblue;
+      box-shadow: 5px 5px 5px #888888;
+      margin: 5px 0 0 80px;
+    }
+    button:active {
+      background-color: steelblue;
+      color: white;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+  }
+  h4 {
+    font-size: .8em;
+  }
+  h5 {
+    font-size: .6em;
+  }
+
 }

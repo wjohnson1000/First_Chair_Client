@@ -28,33 +28,15 @@
         <h5>{{delay | number: 0}} min</h5>
       </div>
     </div>
-    <!-- <div class="departure-calculator">
-      <div class="headers">
-        <h4>Arrive By</h4>
-        <h4>Depart By</h4>
-      </div>
-      <div class="times">
-        <input type="time" name="depart" value="08:30" ng-model='arrive'>
-        <h5>{{depart + delay | date : HH:mm}}</h5>
-      </div>
-    </div> -->
+
     <div class="graph"></div>
     <div class="map-wrapper">
     <h5 ng-hide='showmap' ng-click='showmap = !showmap'>Show Current Directions</h5>
     <h5 ng-show='showmap' ng-click='showmap = !showmap'>Hide Directions</h5>
-    <!-- <iframe ng-show='showmap' width="600" height="450" frameborder="0" style="border:0"
-    ng-src={{directionstring}} allowfullscreen></iframe> -->
-    <!-- <iframe ng-show='showmap' width="600" height="450" frameborder="0" style="border:0"
-    ng-src="https://www.google.com/maps/embed/v1/directions?origin=Denver+CO&destination={{thisRoute.address}}+{{thisRoute.city}}+{{thisRoute.state}}&key=AIzaSyC9CWQ9sZa0uVd0sYs-qo1K-xzq2jYH0qE"
-    allowfullscreen></iframe> -->
     <iframe ng-show='showmap' width="600" height="450" frameborder="0" style="border:0"
     ng-src='{{trustSrc(directionstring)}}'
     allowfullscreen></iframe>
     </div>
-    <!-- <div class="delay">
-      <h3>Current delay due to snow</h3>
-      <h3>20 minutes</h3>
-    </div> -->
 
   </section>
 </div>

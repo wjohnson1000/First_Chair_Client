@@ -6,7 +6,7 @@
     <nav>
       <h4>Routes</h4>
       <ul>
-        <li ui-sref='route' ng-repeat='destination in dashData'>{{destination.city}}</li>
+        <li ui-sref='route({id: $index})' ng-repeat='destination in dashData'>{{destination.city}}</li>
       </ul>
       <h4 ui-sref='addroute'>Add Route</h4>
       <h4 ui-sref='settings'>Settings</h4>
@@ -15,12 +15,24 @@
   </section>
   <section class='add-destination'>
     <h3>Add Destination</h3>
-    <form class="add-destination-form" ng-submit=''>
-      <input type="text" ng-change='routeInput' name="place" ng-model="newplace" value="" placeholder="Add route...">
-      <button type="submit" name="add">Add</button>
-    </form>
-    <iframe width="600" height="450" frameborder="0" style="border:0"
+    <div class="add-destination-form" >
+      <input type="text" name="place" ng-model="newplace" value="" placeholder="Add route...">
+      <button type="submit" name="add" ng-click='placesearch()'>Search</button>
+    </div>
+    <div class="search-results">
+      <div class="result" ng-repeat='result in searchResults | limitTo: 10'>
+        <div class="result-info">
+          <h4>{{result.name}}</h4>
+          <h5>{{result.formatted_address}}</h5>
+        </div>
+        <div class="add-result">
+          <button type="button" name="add" ng-click='addRoute(result)'>Add</button>
+        </div>
+      </div>
+
+    </div>
+    <!-- <iframe width="600" height="450" frameborder="0" style="border:0"
     src="https://www.google.com/maps/embed/v1/place?q=Keystone+ski+area&key=AIzaSyC9CWQ9sZa0uVd0sYs-qo1K-xzq2jYH0qE"
-    allowfullscreen></iframe>
+    allowfullscreen></iframe> -->
   </section>
 </div>

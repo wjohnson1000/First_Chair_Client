@@ -28,8 +28,8 @@
           <h5 ui-sref='route({id: $index})'>{{forecast.city}}</h5>
         </div>
       </div>
-      <div class="bottom-row" ng-repeat='forecast in dashData'>
-        <div class="cell">
+      <div class="bottom-row">
+        <div class="cell" ng-repeat='forecast in dashData'>
           <h4>{{forecast.forecast.in}}"</h4>
         </div>
       </div>

@@ -115,13 +115,45 @@ app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', 
 }]);
 
 app.controller('addroute', ['$scope', '$http', 'dashboardService', function($scope, $http, dashboardService){
-  $scope.searchString = "";
-  $scope.routeInput = function(){
-    $scope.searchString = $scope.newplace;
-    $scope.$apply();
-  }
   $scope.dashData = dashboardService.getDashData();
-  console.log('hello from addroute');
+  $scope.searchResults = []
+//  $scope.searchResults = [
+//    {name: 'name', formatted_address: 'very very long, formatte, address, United States'},
+//  {name: 'name', formatted_address: 'very very long formatted address, United State    s'},
+//{name: 'name', formatted_address: 'very very long formatted address, United State    s'} ]
+  $scope.placesearch = function(){
+    $http({
+      method: 'POST',
+      url: 'http://firstchair.herokuapp.com/findroute',
+      headers: {
+        'Content-Type': 'text/plain',
+        'Accept': '*'
+      },
+      data: $scope.newplace.replace(" ", "+")
+    }).then(function success(response){
+        console.log(response)
+        $scope.searchResults = response.data.results
+    }).then(function error(err){
+        console.error(err);
+    })
+  }
+
+  $scope.addRoute = function(route){
+//    console.log(route);
+    $http({
+      method: 'POST',
+      url: 'http://firstchair.herokuapp.com/addroute',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      data: { desty: route }
+    }).then(function success(response){
+      window.location.href = '/#/dashboard';
+    }, function error(err){
+        console.error(err);
+    });
+  }
 }]);
 app.controller('settings', ['$scope', '$http', 'dashboardService', function($scope, $http, dashboardService){
   $scope.alarm = dashboardService.getSnowfallAlarm();
