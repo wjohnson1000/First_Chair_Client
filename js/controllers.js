@@ -3,7 +3,9 @@ app.controller('landing', ['$scope', '$http', '$location', '$window', function($
     $window.location = "https://firstchair.herokuapp.com/callback"
   }
 }]);
+
 app.controller('dashboard', ['$scope', '$http', 'dashboardService', '$stateParams', 'logoutService', function($scope, $http, dashboardService, $stateParams, logoutService){
+  console.log("hi")
   token = window.location.search.substr(window.location.search.indexOf('=') + 1);
   if(token.length > 0){
     localStorage.setItem('token', token);
@@ -60,6 +62,7 @@ app.controller('dashboard', ['$scope', '$http', 'dashboardService', '$stateParam
     return logoutService.logout();
   }
 }]);
+
 app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', '$sce', 'logoutService', function($scope, $http, $stateParams, dashboardService, $sce, logoutService){
   $scope.dashData = dashboardService.getDashData();
   $scope.snowfallAlarm = dashboardService.getSnowfallAlarm();
@@ -196,6 +199,7 @@ app.controller('addroute', ['$scope', '$http', 'dashboardService', 'logoutServic
     return logoutService.logout();
   }
 }]);
+
 app.controller('settings', ['$scope', '$http', 'dashboardService', 'logoutService', function($scope, $http, dashboardService, logoutService){
   $scope.alarm = dashboardService.getSnowfallAlarm();
   $scope.confirm = false;
