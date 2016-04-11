@@ -1,18 +1,5 @@
 <div class="page-wrapper">
-  <section class="sidebar-container">
-    <div class="title-block">
-      <h3 ui-sref='dashboard'>First Chair</h3>
-    </div>
-    <nav>
-      <h4>Routes</h4>
-      <ul>
-        <li ui-sref='route({id: $index})' ng-repeat='destination in dashData'>{{destination.city}}</li>
-      </ul>
-      <h4 ui-sref='addroute'>Add Route</h4>
-      <h4 ui-sref='settings'>Settings</h4>
-      <h4 ui-sref='landing'>Logout</h4>
-    </nav>
-  </section>
+  <sidebar></sidebar>
   <section class='add-destination'>
     <h3>Add Destination</h3>
     <div class="add-destination-form" >

@@ -1,26 +1,14 @@
 <div class="page-wrapper">
-  <section class="sidebar-container">
-    <div class="title-block">
-      <h3>First Chair</h3>
-    </div>
-    <nav>
-      <h4>Routes</h4>
-      <ul>
-        <li ui-sref='route({id: $index})' ng-repeat='destination in dashData'>{{destination.city}}</li>
-      </ul>
-      <h4 ui-sref='addroute'>Add Route</h4>
-      <h4 ui-sref='settings'>Settings</h4>
-      <h4 ui-sref='landing'>Logout</h4>
-    </nav>
-  </section>
-  <section class="dashboard">
+  <sidebar></sidebar>
+  <section class="dashboard" ng-show='hasSetHome'>
     <div class="forecast-icon">
       <img ng-hide='isSnow' src="../img/nosnow.svg" alt="" />
       <img ng-show='isSnow' src="../img/flake.svg" alt="" />
     </div>
     <div class="forecast-text">
       <h3 ng-show='isSnow'>Snow in the forecast!</h3>
-      <h3 ng-hide='isSnow'>No snow in the forecast...</h3>
+      <h3 ng-hide='!isSnow && noDest'>No snow in the forecast...</h3>
+      <h3 ng-show='noDest'>No destinations added... Go to Add Route!</h3>
     </div>
     <div class="route-forecast-grid">
       <div class="top-row">
@@ -35,4 +23,23 @@
       </div>
     </div>
   </section>
+  <div class="enter-home-popup" ng-hide='hasSetHome'>
+    <h4>Enter the address you would like to use as your home address.
+    This is where travel times will be calculated from.</h4>
+    <form class="" ng-submit='updateHome()'>
+      <div>
+        <label for="address">Address: </label>
+        <input type="text" name="address" ng-model='address' value="" required>
+      </div>
+      <div>
+        <label for="city">City: </label>
+        <input type="text" name="city" ng-model='city' value="" required>
+      </div>
+      <div>
+        <label for="state">State: </label>
+        <input type="text" name="state" ng-model='state' value="" required>
+      </div>
+      <button type="submit" class="submit-button" name="sendhome">Set Home</button>
+    </form>
+  </div>
 </div>

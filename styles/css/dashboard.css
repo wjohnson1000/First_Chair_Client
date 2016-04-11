@@ -107,4 +107,48 @@ img {
     .route-forecast-grid .bottom-row h4 {
       padding: 15px 0; }
 
+.enter-home-popup {
+  margin-left: calc(35% + 5vw);
+  margin-top: 10%;
+  width: calc(100% - 50% - 5vw);
+  font-family: 'Noto Sans', sans-serif;
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  z-index: 4;
+  padding: 20px;
+  font-size: 1.2em;
+  line-height: 1.5em; }
+  .enter-home-popup form {
+    width: 90%;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center; }
+    .enter-home-popup form div {
+      width: 60%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      align-content: space-between; }
+      .enter-home-popup form div input {
+        margin: 10px;
+        width: 55%; }
+    .enter-home-popup form .submit-button {
+      width: 40%;
+      height: 60px;
+      font-family: 'Sansita One', cursive;
+      color: steelblue;
+      box-shadow: 5px 5px 5px #888888;
+      font-size: 1.4em;
+      margin-top: 30px; }
+    .enter-home-popup form .submit-button:active {
+      background-color: steelblue;
+      color: white; }
+    .enter-home-popup form .submit-button:hover {
+      cursor: pointer; }
+
 /*# sourceMappingURL=dashboard.css.map */

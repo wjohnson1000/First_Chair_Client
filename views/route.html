@@ -1,21 +1,5 @@
 <div class="page-wrapper">
-  <section class="sidebar-container">
-    <div class="sidebar">
-      <div class="title-block">
-        <h3 ui-sref='dashboard'>First Chair</h3>
-      </div>
-      <nav>
-        <h4>Routes</h4>
-        <ul>
-          <li ng-repeat='destination in dashData' ui-sref='route({id: $index})'>
-            {{destination.city}}</li>
-        </ul>
-        <h4 ui-sref='addroute'>Add Route</h4>
-        <h4 ui-sref='settings'>Settings</h4>
-        <h4 ui-sref='landing'>Logout</h4>
-      </nav>
-    </div>
-  </section>
+  <sidebar></sidebar>
   <section class='route-container'>
     <h3 class="route-title">{{thisRoute.city}}</h3>
     <div class="snow-summary">

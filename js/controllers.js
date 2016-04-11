@@ -1,29 +1,65 @@
 app.controller('landing', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window){
-  console.log('hello from controllers');
   $scope.login = function(){
-    console.log('pressed a button');
     $window.location = "https://firstchair.herokuapp.com/callback"
   }
 }]);
-app.controller('dashboard', ['$scope', '$http', 'dashboardService', '$stateParams', function($scope, $http, dashboardService, $stateParams){
-  $scope.isSnow = false;
-  $scope.snowfallAlarm = dashboardService.getSnowfallAlarm();
-  dashboardService.myDashboard().then(function(response){
-    $scope.dashData = response.data.destinations;
-    console.log($scope.dashData);
-    dashboardService.saveDashData($scope.dashData);
-    $scope.dashData.forEach(function(elem){
-      if(elem.forecast.in > 0){
-        $scope.isSnow = true;
-      }
-    })
-  })
+app.controller('dashboard', ['$scope', '$http', 'dashboardService', '$stateParams', 'logoutService', function($scope, $http, dashboardService, $stateParams, logoutService){
   token = window.location.search.substr(window.location.search.indexOf('=') + 1);
   if(token.length > 0){
     localStorage.setItem('token', token);
   }
+  $scope.isSnow = false;
+  $scope.noDest = true;
+  $scope.hasSetHome = true;
+  $scope.snowfallAlarm = dashboardService.getSnowfallAlarm();
+  dashboardService.myDashboard(localStorage.getItem('token')).then(function(response){
+    $scope.dashData = response.data.destinations;
+    dashboardService.snowfallAlarm = response.data.snowfall_alarm;
+    dashboardService.saveDashData($scope.dashData);
+    response.data.set_home ? null : $scope.hasSetHome = false;
+    if($scope.dashData.length > 0){
+      $scope.noDest = false;
+    } else {
+      $scope.dashData.forEach(function(elem){
+        if(elem.forecast.in > 0){
+          $scope.isSnow = true;
+        }
+      })
+    }
+  })
+  $scope.updateHome = function(){
+    $scope.hasSetHome = true;
+    var data = {
+      address: $scope.address,
+      city: $scope.city,
+      state: $scope.state
+    }
+    $http({
+      method: 'POST',
+      url: 'http://firstchair.herokuapp.com/sethome',
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json',
+        'Accept': '*'
+      },
+      data: data
+    }).then(function success(response){
+        console.log(response)
+    }).then(function error(err){
+        if(err){
+          console.error(err);
+        }
+    })
+    
+  };
+  $scope.cancelHome = function(){
+    $scope.hasSetHome = true;
+  };
+  $scope.logout = function(){
+    return logoutService.logout();
+  }
 }]);
-app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', '$sce', function($scope, $http, $stateParams, dashboardService, $sce){
+app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', '$sce', 'logoutService', function($scope, $http, $stateParams, dashboardService, $sce, logoutService){
   $scope.dashData = dashboardService.getDashData();
   $scope.snowfallAlarm = dashboardService.getSnowfallAlarm();
   $scope.thisRoute = dashboardService.getRoute($stateParams.id);
@@ -112,20 +148,21 @@ app.controller('route', ['$scope', '$http', '$stateParams', 'dashboardService', 
             .attr("text-anchor", "middle")
             .attr("transform", "translate("+ (width/2) +","+(height-(padding/3))+")")
             .text("Yesterday's Snowfall (in)");
+  $scope.logout = function(){
+    return logoutService.logout();
+  }
 }]);
 
-app.controller('addroute', ['$scope', '$http', 'dashboardService', function($scope, $http, dashboardService){
+app.controller('addroute', ['$scope', '$http', 'dashboardService', 'logoutService', function($scope, $http, dashboardService, logoutService){
   $scope.dashData = dashboardService.getDashData();
   $scope.searchResults = []
-//  $scope.searchResults = [
-//    {name: 'name', formatted_address: 'very very long, formatte, address, United States'},
-//  {name: 'name', formatted_address: 'very very long formatted address, United State    s'},
-//{name: 'name', formatted_address: 'very very long formatted address, United State    s'} ]
+  token = localStorage.getItem('token')
   $scope.placesearch = function(){
     $http({
       method: 'POST',
       url: 'http://firstchair.herokuapp.com/findroute',
       headers: {
+        'Authorization': token,
         'Content-Type': 'text/plain',
         'Accept': '*'
       },
@@ -139,11 +176,11 @@ app.controller('addroute', ['$scope', '$http', 'dashboardService', function($sco
   }
 
   $scope.addRoute = function(route){
-//    console.log(route);
     $http({
       method: 'POST',
       url: 'http://firstchair.herokuapp.com/addroute',
       headers: {
+        'Authorization': token,
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
@@ -154,8 +191,11 @@ app.controller('addroute', ['$scope', '$http', 'dashboardService', function($sco
         console.error(err);
     });
   }
+  $scope.logout = function(){
+    return logoutService.logout();
+  }
 }]);
-app.controller('settings', ['$scope', '$http', 'dashboardService', function($scope, $http, dashboardService){
+app.controller('settings', ['$scope', '$http', 'dashboardService', 'logoutService', function($scope, $http, dashboardService, logoutService){
   $scope.alarm = dashboardService.getSnowfallAlarm();
   $scope.confirm = false;
   console.log($scope.alarm);
@@ -163,7 +203,9 @@ app.controller('settings', ['$scope', '$http', 'dashboardService', function($sco
     dashboardService.setSnowfallAlarm(value);
     $scope.confirm = true;
   }
-  //$scope.setAlarm = dashboardService.setSnowfallAlarm($scope.alarm);
   $scope.dashData = dashboardService.getDashData();
   console.log('hello from settings');
+  $scope.logout = function(){
+    return logoutService.logout();
+  }
 }]);

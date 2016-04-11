@@ -28,8 +28,14 @@ app.factory('dashboardService', ['$http', function($http){
     }
   }
   return {
-    myDashboard: function(){
-      return $http.get('http://firstchair.herokuapp.com/dashboard')
+    myDashboard: function(token){
+      return $http({
+        method: 'GET',
+        url: 'http://firstchair.herokuapp.com/dashboard',
+        headers: {
+          'Authorization': token
+        }
+      })
     },
     getDashData: getDashData,
     saveDashData: saveDashData,
@@ -37,8 +43,18 @@ app.factory('dashboardService', ['$http', function($http){
     getDelay: getDelay,
     snowfallAlarm: 0,
     setSnowfallAlarm: function(value){
-        this.snowfallAlarm = value
-        return value
+      $http({
+        method: 'PUT',
+        url: 'http://firstchair.herokuapp.com/setalarm',
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        data: { alarm: value }
+      })
+      this.snowfallAlarm = value
+      return value
     },
     getSnowfallAlarm: function(){  
       return this.snowfallAlarm 
@@ -48,7 +64,20 @@ app.factory('dashboardService', ['$http', function($http){
 app.factory('forecastService', ['$http', function($http){
   return {
     getForecast: function(){
-      return $http.get('http://firstchair.herokuapp.com/forecast')
+      return $http({
+        method: 'GET',
+        url: 'http://firstchair.herokuapp.com/forecast',
+        headers: {
+          'Authorization': token
+        }
+      })
+    }
+  }
+}]);
+app.factory('logoutService', ['$http', function($http){
+  return {
+    logout: function(){
+      return localStorage.removeItem('token');
     }
   }
 }]);
