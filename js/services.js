@@ -33,7 +33,8 @@ app.factory('dashboardService', ['$http', function($http){
         method: 'GET',
         url: 'http://firstchair.herokuapp.com/dashboard',
         headers: {
-          'Authorization': token
+          'Authorization': token,
+          'Access-Control-Allow-Origin': '*'
         }
       })
     },

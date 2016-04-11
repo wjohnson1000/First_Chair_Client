@@ -8,6 +8,7 @@ app.controller('dashboard', ['$scope', '$http', 'dashboardService', '$stateParam
   if(token.length > 0){
     localStorage.setItem('token', token);
   }
+  console.log(token);
   $scope.isSnow = false;
   $scope.noDest = true;
   $scope.hasSetHome = true;
